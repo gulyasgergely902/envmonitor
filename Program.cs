@@ -14,17 +14,17 @@ namespace envmonitor
         public ulong TotalVirtualMemory;
         public ulong AvailableVirtualMemory;
     }
-    class Program
+    static class Program
     {
-        static bool stopMonitoring = false;
+        static bool stopMonitoring;
         static void Main(string[] args)
         {
             Thread keyListenerThread = new Thread(KeyListener);
             keyListenerThread.Start();
 
-            PerformanceCounter cpuCounter = new("Processor Information", "% Processor Time", "_Total"); 
+            PerformanceCounter cpuCounter = new("Processor Information", "% Processor Time", "_Total");
 
-            while(!stopMonitoring) 
+            while(!stopMonitoring)
             {
                 ResourceInfo resourceInfo = GetResourceInfo(cpuCounter);
 

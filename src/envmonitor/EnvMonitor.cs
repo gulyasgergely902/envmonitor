@@ -32,9 +32,9 @@ namespace envmonitor
                 Console.WriteLine("Operating System: " + resourceInfo.OSFullName);
                 Console.WriteLine("OS Version: " + resourceInfo.OSVersion);
                 Console.WriteLine("Platform: " + resourceInfo.OSPlatform);
-                Console.WriteLine("CPU Utilization (%):\t" + GenerateProgressBar((int)resourceInfo.CPUUtilization, 100, 100, "%"));
-                Console.WriteLine("Physical Memory (MiB):\t" + GenerateProgressBar((int)resourceInfo.TotalPhysicalMemory - (int)resourceInfo.AvailablePhysicalMemory, (int)resourceInfo.TotalPhysicalMemory, 100, "MiB"));
-                Console.WriteLine("Virtual Memory (MiB):\t" + GenerateProgressBar((int)resourceInfo.TotalVirtualMemory - (int)resourceInfo.AvailableVirtualMemory, (int)resourceInfo.TotalVirtualMemory, 100, "MiB"));
+                Console.WriteLine("CPU Utilization (%):\t" + GenerateProgressBar((int)resourceInfo.CPUUtilization, 100, 50, "%"));
+                Console.WriteLine("Physical Memory (MiB):\t" + GenerateProgressBar((int)resourceInfo.TotalPhysicalMemory - (int)resourceInfo.AvailablePhysicalMemory, (int)resourceInfo.TotalPhysicalMemory, 50, "MiB"));
+                Console.WriteLine("Virtual Memory (MiB):\t" + GenerateProgressBar((int)resourceInfo.TotalVirtualMemory - (int)resourceInfo.AvailableVirtualMemory, (int)resourceInfo.TotalVirtualMemory, 50, "MiB"));
                 Console.WriteLine("\nPress 'X' to stop monitoring the environment.");
 
                 Thread.Sleep(1000);
@@ -46,7 +46,6 @@ namespace envmonitor
 
         static ResourceInfo GetResourceInfo(PerformanceCounter cpuPerformanceCounter)
         {
-            Console.WriteLine("Getting resource information...");
             ComputerInfo computerInfo = new();
             ResourceInfo resourceInfo = new()
             {

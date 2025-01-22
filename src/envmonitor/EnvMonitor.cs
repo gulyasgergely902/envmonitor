@@ -14,7 +14,7 @@ namespace envmonitor
         public ulong TotalVirtualMemory;
         public ulong AvailableVirtualMemory;
     }
-    public class EnvMonitor
+    public static class EnvMonitor
     {
         static bool stopMonitoring;
         static void Main(string[] args)

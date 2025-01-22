@@ -14,7 +14,7 @@ namespace envmonitor
         public ulong TotalVirtualMemory;
         public ulong AvailableVirtualMemory;
     }
-    static class Program
+    public class EnvMonitor
     {
         static bool stopMonitoring;
         static void Main(string[] args)
@@ -78,8 +78,8 @@ namespace envmonitor
                 Thread.Sleep(100);
             }
         }
-    
-        static String GenerateProgressBar(int value, int total, int length, String label)
+
+        public static String GenerateProgressBar(int value, int total, int length, String label)
         {
             int progress = (int)((double)value / total * length);
             return value.ToString() + " " + label + " [" + new String('#', progress) + new String('-', length - progress) + "] " + total.ToString() + " " + label;
